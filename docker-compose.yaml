@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  lemonbot:
+    image: lemonsaurus/tyrant:latest
+    container_name: tyrant
+    command: pipenv run bot
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/tyrant/logs
+      - ./images:/tyrant/images:ro
+      - ./fonts:/tyrant/fonts:ro

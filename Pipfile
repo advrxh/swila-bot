@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "*"
+isort = "*"
+
+[packages]
+disnake = "~=2.4"
+loguru = "~=0.5"
+aiodns = "*"
+
+[requires]
+python_version = "3.9"
+
+[scripts]
+bot = "python -m bot"
