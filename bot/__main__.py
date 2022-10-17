@@ -14,12 +14,7 @@ bot = bot.SwilaBot(
     command_prefix=when_mentioned_or(
         constants.Bot.prefix
     ),  # Invoked commands must have this prefix
-    activity=disnake.Streaming(
-        platform="Swila",
-        details="Managing the Swila Discord Forum",
-        name="ABW | Always be Writing",
-        url="https://screenwritinginla.com",
-    ),
+    activity=disnake.Game(name="in Swila Forum"),
     case_insensitive=True,
     allowed_mentions=disnake.AllowedMentions(everyone=True, roles=True),
     intents=intents,
