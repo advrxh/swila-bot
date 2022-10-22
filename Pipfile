@@ -11,6 +11,7 @@ isort = "*"
 disnake = "~=2.4"
 loguru = "~=0.5"
 aiodns = "*"
+arrow = "*"
 
 [requires]
 python_version = "3.9"

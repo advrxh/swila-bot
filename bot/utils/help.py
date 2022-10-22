@@ -33,7 +33,7 @@ class BotHelp(commands.HelpCommand):
         help_embed = Embed(
             title="Help",
             description="Available commands",
-            color=constants.Color.yellow,
+            color=constants.Color.primary,
         )
 
         for cog_name in bot.cogs:  # looping through bot cogs
@@ -79,7 +79,7 @@ class BotHelp(commands.HelpCommand):
         help_embed = Embed(
             title=f"{command.name.title()} {self.format_aliases(command, add_parenthesis=True)}",
             description=f"{help_text}\n```\n{self.get_command_signature(command, add_aliases=False)}\n```",
-            color=constants.Color.yellow,
+            color=constants.Color.primary,
         )
 
         await self.get_destination().send(embed=help_embed)
@@ -96,7 +96,7 @@ class BotHelp(commands.HelpCommand):
 
         help_embed = Embed(
             title=f"{group.name.title()} {self.format_aliases(group, add_parenthesis=True)}",
-            color=constants.Color.yellow,
+            color=constants.Color.primary,
         )
 
         for command in group_commands:
@@ -120,7 +120,7 @@ class BotHelp(commands.HelpCommand):
     async def send_error_message(self, error):
         """Post error message when an error occurs."""
         help_embed: Embed = Embed(
-            title="Oops!", description=error, color=constants.Color.yellow
+            title="Oops!", description=error, color=constants.Color.primary
         )
 
         await self.get_destination().send(embed=help_embed)

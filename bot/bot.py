@@ -1,4 +1,5 @@
 import socket
+import random
 from typing import Optional
 
 import disnake
@@ -73,3 +74,8 @@ class SwilaBot(commands.Bot):
                 continue
             if channel_id not in all_channels_ids:
                 logger.error('Channel "{}" with ID {} missing', name, channel_id)
+    async def on_member_join(self, member: disnake.Member):
+        
+        guild : disnake.Guild = self.get_guild(constants.Bot.guild)
+
+        await guild.get_channel(constants.Channels.welcome_channel).send(f"Hey {member.mention}! welcome to Swila.\n{random.choice(constants.Responses.WELCOME)}")

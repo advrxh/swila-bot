@@ -2,6 +2,9 @@ import os
 from pathlib import Path
 from typing import Optional
 
+
+_debug = os.environ.get("SWILA_DEBUG", "false").lower() == "true"
+
 POSITIVE_VERBS = ["pronounces", "decrees", "proclaims", "ordains"]
 NEGATIVE_VERBS = ["commands", "orders", "demands", "dictates"]
 UNCERTAIN_VERBS = ["mumbles", "suggests", "mutters", "shrugs, and says"]
@@ -82,19 +85,26 @@ class Bot:
     token: Optional[str] = os.environ.get("SWILA_DISCORD_TOKEN")
     prefix: str = "."
     debug: bool = os.environ.get("SWILA_DEBUG", "false").lower() == "true"
-    guild: int = 1007505851357073509
+
+    if debug:
+        guild: int = 1031589477983989812
+    else:
+        guild: int = 1007505851357073509
 
 
 class Color:
     """Constant containing color values."""
 
-    yellow: int = 0xF6F65D
+    primary: int = 0x082612
 
 
 class Channels:
     """Channel IDs that are relevant for this community."""
 
-    pass
+    if _debug:
+        welcome_channel = 1033291440329064448
+        weekly_exercise_forum = 1033287983463399454
+        exercise_noti = 1033393548365680660
 
 
 class Messages:
@@ -106,10 +116,28 @@ class Messages:
 class Roles:
     """Roles relevant to this bot."""
 
-    pass
+    if _debug:
+        admin = 1033289362219208825
+        manager = 1033289362219208825
 
 
 class Users:
     """Users relevant to this bot."""
 
     pass
+
+
+class Responses:
+    """Responses relevant to the bot"""
+
+    WELCOME = [
+        "We're happy to have you here!",
+        "We're excited to see you around.",
+        "Always be writing!",
+    ]
+
+
+class Paths:
+    """File/Folder paths relevant to the bot"""
+
+    DATA_STORE = Path(os.environ.get("ROOT_DIR") + "deps/data_store.json")

@@ -21,6 +21,8 @@ bot = bot.SwilaBot(
 )
 
 # Load the extensions we want
+bot.load_extension("bot.cogs.forum_managment")
+bot.load_extension("bot.cogs.exercise_managment")
 
 # Validate the token
 token = constants.Bot.token
