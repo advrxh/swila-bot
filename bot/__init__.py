@@ -10,6 +10,7 @@ class InterceptHandler(logging.Handler):
 
     This is directly from the loguru docs.
     """
+
     def emit(self, record):
         # Get corresponding Loguru level if it exists
         try:
@@ -23,7 +24,9 @@ class InterceptHandler(logging.Handler):
             frame = frame.f_back
             depth += 1
 
-        logger.opt(depth=depth, exception=record.exc_info).log(level, record.getMessage())
+        logger.opt(depth=depth, exception=record.exc_info).log(
+            level, record.getMessage()
+        )
 
 
 # Push all std lib logger calls to loguru
@@ -39,4 +42,6 @@ logger.remove()
 # Define logger format and add the sink.
 logger_format = "{time:YYYY-MM-DD at HH:mm:ss} | {level} | {name}:{line} | {message}"
 logger.add(sys.stdout, format=logger_format)
-logger.add("logs/tyrant_log.log", format=logger_format, retention="7 days", rotation="10 MB")
+logger.add(
+    "logs/swila_log.log", format=logger_format, retention="7 days", rotation="5 MB"
+)
