@@ -105,6 +105,7 @@ class Channels:
         welcome_channel = 1033291440329064448
         weekly_exercise_forum = 1033287983463399454
         exercise_noti = 1033393548365680660
+        leaderboard_noti = 1040869766853828650
 
 
 class Messages:
@@ -125,6 +126,13 @@ class Users:
     """Users relevant to this bot."""
 
     pass
+
+
+class Webhooks:
+    """webhooks relevant to the bot."""
+
+    if _debug:
+        leaderboard = 1040869801758822425
 
 
 class Responses:
