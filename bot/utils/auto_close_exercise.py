@@ -6,13 +6,19 @@ from bot.constants import Paths
 import arrow
 
 
-async def set_duration(days: int, exercise_no: int):
+async def set_duration(days: int = None, exercise_no: int = None, revoke=False):
+
     with Paths.DATA_STORE.open("r+", encoding="utf-8") as ds_file:
         data = json.load(ds_file)
 
     Paths.DATA_STORE.unlink()
     Paths.DATA_STORE.touch()
 
+    if revoke:
+
+        with Paths.DATA_STORE.open("r+", encoding="utf-8") as ds_file:
+            data = {}
+            json.dump(data, ds_file)
     with Paths.DATA_STORE.open("r+", encoding="utf-8") as ds_file:
         data["exercise"] = {
             "duration": arrow.now().shift(days=days).timestamp(),

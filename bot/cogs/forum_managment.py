@@ -81,7 +81,7 @@ class ForumManager(Cog):
 
         await self._close_exercise(inter=inter, exercise_no=exercise_no)
 
-    @tasks.loop(hours=1)
+    @tasks.loop(hours=3)
     async def auto_close(self):
         dur, ex_no = await get_duration()
 
@@ -128,6 +128,8 @@ class ForumManager(Cog):
                 avlbl_tags[i] = _tmp.with_changes()
 
                 await forum_channel.edit(available_tags=avlbl_tags)
+
+                await set_duration(revoke=True)
                 break
 
     async def exercise_notification_embed(self, exercise_no: int, close: bool = False):
